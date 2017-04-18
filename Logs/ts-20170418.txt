@@ -1,0 +1,19 @@
+2017-04-18T11:53:21.0747631+05:30  [INF] Executed DbCommand (58ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE') SELECT 1 ELSE SELECT 0 (6438bdd5)
+2017-04-18T11:53:21.4717858+05:30  [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Student] AS [s])
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END (6438bdd5)
+2017-04-18T11:53:36.0436193+05:30 0HL464DOVQ08J [INF] Request starting HTTP/1.1 GET http://localhost:5000/api/students/1   (e5be5b71)
+2017-04-18T11:53:36.5806500+05:30 0HL464DOVQ08J [INF] Executing action method "EntityAPI.Controllers.StudentsController.GetStudent (EntityAPI)" with arguments (["1"]) - ModelState is Valid (ba7f4ac2)
+2017-04-18T11:53:36.8706666+05:30 0HL464DOVQ08J [INF] Executed DbCommand (66ms) [Parameters=[@__id_0='?'], CommandType='Text', CommandTimeout='30']
+SELECT TOP(2) [m].[ID], [m].[EnrollmentDate], [m].[FirstMidName], [m].[LastName]
+FROM [Student] AS [m]
+WHERE [m].[ID] = @__id_0 (6438bdd5)
+2017-04-18T11:53:37.1596831+05:30 0HL464DOVQ08J [INF] {"ID":1,"LastName":"Alexander","FirstMidName":"Carson","EnrollmentDate":"2005-09-01T00:00:00","Enrollments":null} (c6be0a02)
+2017-04-18T11:53:37.2006855+05:30 0HL464DOVQ08J [INF] Executing ObjectResult, writing value "Microsoft.AspNetCore.Mvc.ControllerContext". (4e968210)
+2017-04-18T11:53:37.3266927+05:30 0HL464DOVQ08J [INF] Executed action "EntityAPI.Controllers.StudentsController.GetStudent (EntityAPI)" in 898.7764ms (afa2e885)
+2017-04-18T11:53:37.3506940+05:30 0HL464DOVQ08J [INF] Request finished in 1319.6164ms 200 application/json; charset=utf-8 (15c52c40)

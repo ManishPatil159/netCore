@@ -39,7 +39,9 @@ namespace EntityAPI
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SchoolContext context)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddFile("Logs/ts-{Date}.txt");
             loggerFactory.AddDebug();
+            
             ConfigureAuth(app);
             app.UseMvc();
 

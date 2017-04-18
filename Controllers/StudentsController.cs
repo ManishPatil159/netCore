@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using EntityAPI.Data;
 using EntityAPI.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace EntityAPI.Controllers
 {
@@ -14,10 +16,12 @@ namespace EntityAPI.Controllers
     public class StudentsController : Controller
     {
         private readonly SchoolContext _context;
+        private ILogger<StudentsController> _logger;
 
-        public StudentsController(SchoolContext context)
+        public StudentsController(ILogger<StudentsController> loggerFactory, SchoolContext context)
         {
             _context = context;
+            _logger = loggerFactory;
         }
 
         // GET: api/Students
@@ -43,7 +47,7 @@ namespace EntityAPI.Controllers
             {
                 return NotFound();
             }
-
+            _logger.LogInformation(JsonConvert.SerializeObject(student));
             return Ok(student);
         }
 
